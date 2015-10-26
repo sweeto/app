@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>React Redux Scaffold</title>
+  <title>Sweeto</title>
 </head>
 <body>
   <div id="content">
-    <h1>If you can see this, something is broken (or JS is not enabled)!!.</h1>
+    <h1>If you can see this, something went wrong ...</h1>
   </div>
 
   <script>
