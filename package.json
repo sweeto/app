@@ -8,7 +8,8 @@
     "serve": "node scripts/serve.js",
     "clean": "node scripts/clean.js",
     "asset": "node scripts/asset.js",
-    "build": "npm run clean; npm run asset; node scripts/build.js"
+    "build": "npm run clean; npm run asset; node scripts/build.js",
+    "publish": "npm run build; gh-pages -d dist"
   },
   "src": "src",
   "dependencies": {
@@ -47,6 +48,7 @@
     "eslint-loader": "^1.1.0",
     "eslint-plugin-react": "^3.5.1",
     "express": "^4.13.3",
+    "gh-pages": "^0.4.0",
     "html-webpack-plugin": "^1.6.2",
     "ncp": "^2.0.0",
     "postcss-loader": "^0.6.0",
