@@ -4,6 +4,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReduxRouter } from 'redux-router';
 import store from './lib/store';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 if (__DEVTOOLS__) {
   const { DebugPanel, DevTools, LogMonitor } = require('redux-devtools/lib/react');
