@@ -1,0 +1,51 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": [
+      2,
+      2
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-reserved-keys": 0,
+    "no-wrap-func": 0,
+    "spaced-line-comment": 0,
+    "react/sort-comp": [1, {
+      "order": [
+        "constructor",
+        "lifecycle",
+        "render",
+        "everything-else"
+      ]
+    }],
+    "id-length": [1, {
+      "exceptions": ["e"]
+    }]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": ["airbnb", "airplus"],
+  "ecmaFeatures": {
+    "jsx": true,
+    "experimentalObjectRestSpread": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "__DEVTOOLS__": true
+  }
+}
