@@ -7,10 +7,21 @@ import routes from '../routes';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
+let router;
+if (window.location.hostname.indexOf('github.io')) {
+  router = reduxReactRouter({
+    routes,
+    createHistory,
+    basename: window.location.pathname.replace(/\/$/, '')
+  });
+} else {
+  router = reduxReactRouter({ routes, createHistory });
+}
+
 // TODO: rethink about logger
 const finalCreateStore = compose(
   applyMiddleware(thunk),
-  reduxReactRouter({ routes, createHistory }),
+  router,
   devTools(),
   applyMiddleware(createLogger())
 )(createStore);
