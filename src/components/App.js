@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
 
-import styles from 'styles/main.scss';
+import styles from 'styles/App.scss';
 
 const menuItems = [
   { route: '/', text: 'Home' },
@@ -23,7 +23,10 @@ export default class IndexPage extends Component {
         <AppBar title="Sweeto"
           onLeftIconButtonTouchTap={() => this.refs.leftNav.toggle() } />
         <LeftNav ref="leftNav" menuItems={menuItems} docked={false} onChange={this.onMenuChange.bind(this)}/>
-        {this.props.children}
+
+        <div className={styles.childContainer}>
+          {this.props.children}
+        </div>
       </div>
     );
   }
