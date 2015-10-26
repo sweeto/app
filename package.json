@@ -1,9 +1,9 @@
 {
-  "name": "redux-scafford",
-  "version": "0.2.0",
-  "description": "combination of redux, react-router and ES6+ support ",
-  "repository": "git@github.com:lcjnil/react-redux-scaffold.git",
-  "author": "lcj <emlcjnil@gmail.com>",
+  "name": "sweeto-app",
+  "version": "0.1.0-alpha.1",
+  "description": "Remote control your Sweeto",
+  "repository": "git@github.com:sweeto/app.git",
+  "author": "mikberg <mikaelbrg@gmail.com>",
   "scripts": {
     "serve": "node scripts/serve.js",
     "clean": "node scripts/clean.js",
