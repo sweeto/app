@@ -138,7 +138,7 @@ const production = {
   output: {
     path: assetPath,
     filename: 'main-[hash].js',
-    publicPath: '/'
+    publicPath: '/app/'
   },
   devtool: 'sourcemap',
   entry: [
