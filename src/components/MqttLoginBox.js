@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -6,6 +6,10 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import styles from 'styles/MqttLoginBox.scss';
 
 export default class MqttLoginBox extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func
+  };
+
   render() {
     return (
       <Paper zDepth={1}>
@@ -44,10 +48,13 @@ export default class MqttLoginBox extends Component {
   onSubmit(event) {
     event.preventDefault();
 
+    const { onLogin } = this.props;
     const address = this.refs.address.getValue().trim();
     const username = this.refs.username.getValue().trim();
     const password = this.refs.password.getValue().trim();
 
-    console.log(address, username, password);
+    if (onLogin) {
+      onLogin(address, username, password);
+    }
   }
 }
