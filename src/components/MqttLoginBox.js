@@ -17,11 +17,23 @@ export default class MqttLoginBox extends Component {
           <h2>Login</h2>
 
           <form onSubmit={this.onSubmit.bind(this)}>
-            <TextField
-              fullWidth
-              ref="address"
-              hintText="m20.cloudmqtt.com"
-              floatingLabelText="MQTT Broker address" />
+            <div className={styles.addressPortContainer}>
+              <div className={styles.address}>
+                <TextField
+                  fullWidth
+                  ref="address"
+                  hintText="m20.cloudmqtt.com"
+                  floatingLabelText="MQTT Broker address" />
+              </div>
+              <div className={styles.port}>
+                <TextField
+                  fullWidth
+                  ref="port"
+                  hintText="19232"
+                  type="number"
+                  floatingLabelText="Port" />
+              </div>
+            </div>
             <TextField
               fullWidth
               ref="username"
@@ -50,11 +62,12 @@ export default class MqttLoginBox extends Component {
 
     const { onLogin } = this.props;
     const address = this.refs.address.getValue().trim();
+    const port = Number.parseInt(this.refs.port.getValue().trim(), 10);
     const username = this.refs.username.getValue().trim();
     const password = this.refs.password.getValue().trim();
 
     if (onLogin) {
-      onLogin(address, username, password);
+      onLogin(address, port, username, password);
     }
   }
 }

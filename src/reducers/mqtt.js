@@ -12,6 +12,7 @@ export function mqtt(state = initialState, action = null) {
     return state.merge({
       state: MqttStates.PENDING,
       address: payload.address,
+      port: payload.port,
       username: payload.username
     });
   default:
