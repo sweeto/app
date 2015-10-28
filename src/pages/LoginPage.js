@@ -1,28 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { mqttLogin } from '../actions/MqttAction';
-import * as MqttStates from '../constants/MqttStates';
+import { mqttLogin } from '../actions/ConnectionAction';
+import * as ConnectionStates from '../constants/ConnectionStates';
 import MqttLoginBox from '../components/MqttLoginBox';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
 import styles from 'styles/LoginPage.scss';
 
 @connect(state => ({
-  mqtt: state.mqtt
+  connection: state.connection
 }))
 export default class LoginPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
-    mqtt: PropTypes.object
+    connection: PropTypes.object
   };
 
   render() {
-    const { mqtt } = this.props;
+    const { connection } = this.props;
 
     return (
       <div className={styles.parent}>
         {() => {
-          if (mqtt.get('state') === MqttStates.PENDING) {
+          if (connection.get('state') === ConnectionStates.PENDING) {
             return <CircularProgress mode="indeterminate" />;
           }
           return (
