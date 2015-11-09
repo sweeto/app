@@ -48,7 +48,14 @@ export function mqttLogin(address, port, username, password) {
       password
     });
 
-    client.on('connect', () => dispatch(mqttConnect()));
+    client.on('connect', () => {
+      client.subscribe('neato/status', (err) => {
+        if (err) {
+          return dispatch(mqttError(err));
+        }
+        return dispatch(mqttConnect());
+      });
+    });
     client.on('reconnect', () => dispatch(mqttReconnect()));
     client.on('close', () => dispatch(mqttClose()));
     client.on('offline', () => dispatch(mqttOffline()));
