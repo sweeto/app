@@ -1,6 +1,6 @@
 {
   "name": "sweeto-app",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Remote control your Sweeto",
   "repository": "git@github.com:sweeto/app.git",
   "author": "mikberg <mikaelbrg@gmail.com>",
