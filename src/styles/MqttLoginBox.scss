@@ -1,0 +1,19 @@
+.parent {
+  min-width: 200px;
+  max-width: 400px;
+  padding: 2em;
+}
+
+.bottom {
+  padding-top: 1em;
+  text-align: right;
+}
+
+.addressPortContainer {
+  display: flex;
+}
+
+.address {
+  width: 80%;
+  margin-right: 5%;
+}

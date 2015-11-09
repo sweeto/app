@@ -1,6 +1,6 @@
 {
   "name": "sweeto-app",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Remote control your Sweeto",
   "repository": "git@github.com:sweeto/app.git",
   "author": "mikberg <mikaelbrg@gmail.com>",
@@ -17,6 +17,7 @@
     "history": "^1.12.5",
     "immutable": "^3.7.5",
     "material-ui": "^0.13.0",
+    "mqtt": "^1.5.0",
     "normalize.css": "~3.0.3",
     "react": "^0.14.0",
     "react-addons-create-fragment": "^0.14.0",
@@ -28,6 +29,8 @@
     "react-router": "^1.0.0-rc3",
     "react-tap-event-plugin": "^0.2.1",
     "redux": "^3.0.2",
+    "redux-persist": "^1.4.1",
+    "redux-persist-immutable": "^1.0.5",
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^1.0.0",
     "todomvc-app-css": "^2.0.1"
