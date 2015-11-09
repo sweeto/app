@@ -5,6 +5,8 @@ import { createHashHistory as createHistory } from 'history';
 import createLogger from 'redux-logger';
 import routes from '../routes';
 import thunk from 'redux-thunk';
+import { persistStore, autoRehydrate } from 'redux-persist';
+import reduxPersistImmutable from 'redux-persist-immutable';
 import rootReducer from '../reducers';
 
 let router;
@@ -26,7 +28,13 @@ const finalCreateStore = compose(
   applyMiddleware(createLogger())
 )(createStore);
 
-const store = finalCreateStore(rootReducer);
+const store = autoRehydrate()(finalCreateStore)(rootReducer);
+
+// Enable store persistence
+persistStore(store, {
+  whitelist: ['lastSuccessfulLogin'],
+  transforms: [reduxPersistImmutable]
+});
 
 if (module.hot) {
   // Enable Webpack hot module replacement for reducers

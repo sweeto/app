@@ -6,8 +6,12 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import { IndexPage, TodosPage, LoginPage } from './pages';
 
+import store from './lib/store';
+
 const requireLogin = (nextState, replaceState, cb) => {
   function checkAuth() {
+    console.log(store);
+
     // dummy never logged in
     replaceState(null, '/login');
 
