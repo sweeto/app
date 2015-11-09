@@ -8,12 +8,21 @@ export function connection(state = initialState, action = null) {
   const { type, payload } = action;
 
   switch (type) {
-  case ActionTypes.MQTT_LOGIN:
+  case ActionTypes.MQTT_LOGIN_INIT:
     return state.merge({
       state: MqttStates.PENDING,
       address: payload.address,
       port: payload.port,
       username: payload.username
+    });
+  case ActionTypes.MQTT_CONNECT:
+    return state.merge({
+      state: MqttStates.CONNECTED
+    });
+  case ActionTypes.MQTT_CLOSE:
+  case ActionTypes.MQTT_ERROR:
+    return state.merge({
+      state: MqttStates.DISCONNECTED
     });
   default:
     return state;
