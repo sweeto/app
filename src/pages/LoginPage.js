@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { mqttLogin } from '../actions/ConnectionAction';
 import * as ConnectionStates from '../constants/ConnectionStates';
 import MqttLoginBox from '../components/MqttLoginBox';
@@ -11,19 +12,23 @@ import styles from 'styles/LoginPage.scss';
 @connect(state => ({
   connection: state.connection,
   lastSuccessfulLogin: state.lastSuccessfulLogin
-}))
+}), dispatch => bindActionCreators({
+  replaceState,
+  mqttLogin
+}, dispatch))
 export default class LoginPage extends Component {
   static propTypes = {
-    dispatch: PropTypes.func,
     connection: PropTypes.object,
-    lastSuccessfulLogin: PropTypes.object
+    lastSuccessfulLogin: PropTypes.object,
+    replaceState: PropTypes.func.isRequired,
+    mqttLogin: PropTypes.func.isRequired
   };
 
   componentWillReceiveProps(nextProps) {
-    const { connection, dispatch } = nextProps;
+    const { connection } = nextProps;
 
     if (connection.get('state') === ConnectionStates.CONNECTED) {
-      dispatch(replaceState(null, '/'));
+      this.props.replaceState(null, '/');
     }
   }
 
@@ -49,7 +54,6 @@ export default class LoginPage extends Component {
   }
 
   onLogin(address, port, username, password) {
-    const { dispatch } = this.props;
-    dispatch(mqttLogin(address, port, username, password));
+    this.props.mqttLogin(address, port, username, password);
   }
 }

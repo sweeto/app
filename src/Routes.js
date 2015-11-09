@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
+import * as ConnectionStates from './constants/ConnectionStates';
 
 import App from './components/App';
 import { IndexPage, TodosPage, LoginPage } from './pages';
@@ -10,10 +11,16 @@ import store from './lib/store';
 
 const requireLogin = (nextState, replaceState, cb) => {
   function checkAuth() {
-    console.log(store);
+    if (!store) {
+      replaceState(null, '/login');
+      return cb();
+    }
 
-    // dummy never logged in
-    replaceState(null, '/login');
+    const { connection } = store.getState();
+
+    if (connection && connection.get('state') !== ConnectionStates.CONNECTED) {
+      replaceState(null, '/login');
+    }
 
     cb();
   }
