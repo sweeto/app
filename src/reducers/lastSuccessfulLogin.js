@@ -3,10 +3,10 @@ import { REHYDRATE } from 'redux-persist/constants';
 import * as ActionTypes from '../constants/ActionTypes';
 
 const initialState = Map({
-  address: '',
-  port: '',
-  username: '',
-  password: ''
+  address: undefined,
+  port: undefined,
+  username: undefined,
+  password: undefined
 });
 
 export function lastSuccessfulLogin(state = initialState, action = null) {

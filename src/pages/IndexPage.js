@@ -17,8 +17,6 @@ export default class IndexPage extends Component {
 
     return (
       <div className={styles.parent}>
-        Hi from index
-
         {() => {
           if (analog.get('BatteryTemperature')) {
             return (
