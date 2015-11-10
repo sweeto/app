@@ -7,6 +7,7 @@ import { analog } from './analog';
 import { sensors } from './sensors';
 import { motors } from './motors';
 import { accel } from './accel';
+import { lds } from './lds';
 
 const rootReducer = combineReducers({
   connection,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   analog,
   sensors,
   motors,
-  accel
+  accel,
+  lds
 });
 
 export default rootReducer;
