@@ -7,8 +7,7 @@ import LeftNav from 'material-ui/lib/left-nav';
 import styles from 'styles/App.scss';
 
 const menuItems = [
-  { route: '/', text: 'Home' },
-  { route: '/todos', text: 'Todos' }
+  { route: '/', text: 'Home' }
 ];
 
 @connect(() => ({}))
