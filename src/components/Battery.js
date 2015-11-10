@@ -12,8 +12,8 @@ export default class Battery extends Component {
     return (
       <dl>
         <dt>Charging</dt><dd>{() => { return externalVoltage > 1.0 ? 'Yes' : 'No'; }()}</dd>
-        <dt>Temperature</dt><dd>{temperature}&deg;C</dd>
-        <dt>Voltage</dt><dd>{voltage} V</dd>
+        <dt>Temperature</dt><dd>{Math.round(temperature / 100) / 10}&deg;C</dd>
+        <dt>Voltage</dt><dd>{Math.round(voltage / 100) / 10} V</dd>
       </dl>
     );
   }
