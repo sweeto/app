@@ -11,7 +11,7 @@ export default class Battery extends Component {
     const { temperature, voltage, externalVoltage } = this.props;
     return (
       <dl>
-        <dt>Charging</dt><dd>{() => { return externalVoltage > 1.0 ? 'Yes' : 'No'; }()}</dd>
+        <dt>Charging</dt><dd>{() => { return externalVoltage > 1000 ? 'Yes' : 'No'; }()}</dd>
         <dt>Temperature</dt><dd>{Math.round(temperature / 100) / 10}&deg;C</dd>
         <dt>Voltage</dt><dd>{Math.round(voltage / 100) / 10} V</dd>
       </dl>
