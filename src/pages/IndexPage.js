@@ -25,6 +25,7 @@ export default class IndexPage extends Component {
               <Battery
                 temperature={analog.get('BatteryTemperature')}
                 voltage={analog.get('BatteryVoltage')}
+                externalVoltage={analog.get('ExternalVoltage')}
               />
             );
           }
