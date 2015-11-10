@@ -5,6 +5,9 @@ import { todos, filter } from './todos.js';
 import { connection } from './connection.js';
 import { lastSuccessfulLogin } from './lastSuccessfulLogin';
 import { analog } from './analog';
+import { sensors } from './sensors';
+import { motors } from './motors';
+import { accel } from './accel';
 
 const rootReducer = combineReducers({
   todos,
@@ -12,7 +15,10 @@ const rootReducer = combineReducers({
   connection,
   router,
   lastSuccessfulLogin,
-  analog
+  analog,
+  sensors,
+  motors,
+  accel
 });
 
 export default rootReducer;
