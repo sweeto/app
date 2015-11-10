@@ -9,6 +9,7 @@ import {
   MQTT_OFFLINE,
   MQTT_ERROR,
   MQTT_MESSAGE
+  // MQTT_POST
 } from '../constants/ActionTypes';
 
 let client;
@@ -35,6 +36,10 @@ function mqttError(error) {
 
 function mqttMessage(topic, message) {
   return { type: MQTT_MESSAGE, payload: { topic, message }};
+}
+
+export function mqttPost(topic, message) {
+  client.publish(topic, message);
 }
 
 export function mqttLogin(address, port, username, password) {

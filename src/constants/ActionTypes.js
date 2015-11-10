@@ -12,3 +12,4 @@ export const MQTT_CLOSE = 'MQTT_CLOSE';
 export const MQTT_OFFLINE = 'MQTT_OFFLINE';
 export const MQTT_ERROR = 'MQTT_ERROR';
 export const MQTT_MESSAGE = 'MQTT_MESSAGE';
+export const MQTT_POST = 'MQTT_POST';
