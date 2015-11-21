@@ -1,4 +1,4 @@
 import IndexPage from './IndexPage.js';
 import LoginPage from './LoginPage.js';
-
-export { IndexPage, LoginPage };
+import PlotPage from './PlotPage.js';
+export { IndexPage, LoginPage, PlotPage };

@@ -9,7 +9,7 @@ import styles from 'styles/App.scss';
 
 const menuItems = [
     { route: '/', text: 'Home' },
-    { route: '/lidar', text: 'Lidar View' },
+    { route: '/plot', text: 'Lidar View' },
     { route: '/log', text: 'Log' },
     { route: '/schedule', text: 'Schedule' }
 ];

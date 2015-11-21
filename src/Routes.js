@@ -5,7 +5,7 @@ import { Route, IndexRoute } from 'react-router';
 import * as ConnectionStates from './constants/ConnectionStates';
 
 import App from './components/App';
-import { IndexPage, LoginPage } from './pages';
+import { IndexPage, LoginPage, PlotPage } from './pages';
 
 import store from './lib/store';
 
@@ -34,5 +34,9 @@ export default (
     <Route path="/" component={App}>
       <IndexRoute component={IndexPage} onEnter={requireLogin}/>
     </Route>
+    <Route path="/plot" component={App}>
+      <IndexRoute component={PlotPage} onEnter={requireLogin}/>
+    </Route>
+
   </div>
 );

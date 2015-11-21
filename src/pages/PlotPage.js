@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Battery from '../components/Battery';
+import LidarChart from '../components/LidarChart';
 import Joystick from '../components/Joystick';
+import Motors from '../components/Motors';
 
 // This one is not yet a real action!!!
 import { mqttPost } from '../actions/ConnectionAction';
@@ -8,9 +11,11 @@ import { mqttPost } from '../actions/ConnectionAction';
 import styles from 'styles/IndexPage.scss';
 
 @connect(state => ({
-  charger: state.charger
+  charger: state.charger,
+  lds: state.lds,
+  motors: state.motors
 }))
-export default class IndexPage extends Component {
+export default class PlotPage extends Component {
   static propTypes = {
     charger: PropTypes.object,
     lds: PropTypes.object,
@@ -45,7 +50,7 @@ export default class IndexPage extends Component {
   }
 
   render() {
-    const { charger } = this.props;
+    const { charger, lds, motors } = this.props;
 
     // This is just a way of finding out if we have any data yet
     if (!charger.get('VBattV')) {
@@ -54,7 +59,13 @@ export default class IndexPage extends Component {
 
     return (
       <div className={styles.parent}>
+        <Battery charger={charger}/>
+	<Motors motors={motors}/>
         <Joystick onDrive={this.onDrive.bind(this)} />
+
+        <LidarChart
+          ldsData={lds}
+        />
       </div>
     );
   }
