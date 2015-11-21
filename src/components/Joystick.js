@@ -14,6 +14,8 @@ export default class Joystick extends Component {
         <button onClick={() => onDrive('r')}>Right</button>
         <button onClick={() => onDrive('b')}>Backward</button>
         <button onClick={() => onDrive('l')}>Left</button>
+        <button onClick={() => onDrive('clean')}>Clean</button>
+        <button onClick={() => onDrive('park')}>Park</button>
       </div>
     );
   }

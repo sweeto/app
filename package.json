@@ -29,6 +29,7 @@
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc3",
     "react-tap-event-plugin": "^0.2.1",
+    "react-toolbox": "^0.12.11",
     "redux": "^3.0.2",
     "redux-persist": "^1.4.1",
     "redux-persist-immutable": "^1.0.5",

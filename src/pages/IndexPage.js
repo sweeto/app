@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Battery from '../components/Battery';
 import LidarChart from '../components/LidarChart';
 import Joystick from '../components/Joystick';
+import Motors from '../components/Motors';
 
 // This one is not yet a real action!!!
 import { mqttPost } from '../actions/ConnectionAction';
@@ -10,13 +11,15 @@ import { mqttPost } from '../actions/ConnectionAction';
 import styles from 'styles/IndexPage.scss';
 
 @connect(state => ({
-  analog: state.analog,
-  lds: state.lds
+  charger: state.charger,
+  lds: state.lds,
+  motors: state.motors
 }))
 export default class IndexPage extends Component {
   static propTypes = {
-    analog: PropTypes.object,
-    lds: PropTypes.object
+    charger: PropTypes.object,
+    lds: PropTypes.object,
+    motors: PropTypes.object
   }
 
   onDrive(direction) {
@@ -25,39 +28,39 @@ export default class IndexPage extends Component {
     const driveArgs = (dir) => {
       switch (dir) {
       case 'f':
-        return { LWheelDist: 300, RWheelDist: 300, Speed: 100, Accel: 100, RPM: 0 };
+        return {cmd: 'Drive', args: { LWheelDist: 300, RWheelDist: 300, Speed: 100, Accel: 100, RPM: 0 }};
       case 'r':
-        return { LWheelDist: 300, RWheelDist: -300, Speed: 100, Accel: 100, RPM: 0 };
+        return {cmd: 'Turn', args: {deg: -90}};
       case 'b':
-        return { LWheelDist: -300, RWheelDist: -300, Speed: 100, Accel: 100, RPM: 0 };
+        return {cmd: 'Drive', args: { LWheelDist: -300, RWheelDist: -300, Speed: 100, Accel: 100, RPM: 0 }};
       case 'l':
-        return { LWheelDist: -300, RWheelDist: 300, Speed: 100, Accel: 100, RPM: 0 };
+        return {cmd: 'Turn', args: {deg: 90 }};
+      case 'clean':
+        return {cmd: 'Clean'};
+      case 'park':
+        return {cmd: 'BackToDock'};
+
       default:
         return {};
       }
     };
 
-    const cmd = { cmd: 'Drive', args: driveArgs(direction)};
 
-    mqttPost('neato/commands', JSON.stringify(cmd));
+    mqttPost('neato/commands', JSON.stringify(driveArgs(direction)));
   }
 
   render() {
-    const { analog, lds } = this.props;
+    const { charger, lds, motors } = this.props;
 
     // This is just a way of finding out if we have any data yet
-    if (!analog.get('BatteryTemperature')) {
+    if (!charger.get('VBattV')) {
       return this.renderLoading();
     }
 
     return (
       <div className={styles.parent}>
-        <Battery
-          temperature={analog.get('BatteryTemperature')}
-          voltage={analog.get('BatteryVoltage')}
-          externalVoltage={analog.get('ExternalVoltage')}
-        />
-
+        <Battery charger={charger}/>
+	<Motors motors={motors}/>
         <Joystick onDrive={this.onDrive.bind(this)} />
 
         <LidarChart
