@@ -7,7 +7,7 @@ const assetPath = require('path').join(__dirname, 'dist');
 
 const resolve = {
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.scss'],
     alias: {
       'actions': __dirname + '/src/actions/',
       'components': __dirname + '/src/components/',
@@ -36,11 +36,11 @@ const jsLoaders = {
 
 const loaders = [{
   test: /\.scss/,
-  exclude: [/node_module/],
-  loader: 'style!css?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
+  // exclude: [/node_module/],
+  loader: 'style!css?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass'
 }, {
   test: /\.css/,
-  exclude: [/node_module/],
+  // exclude: [/node_module/],
   loader: 'style!css'
 }, {
   test: /\.(png|jpg|woff|woff2)$/,
