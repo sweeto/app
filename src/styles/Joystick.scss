@@ -1,0 +1,33 @@
+.parent {
+  flex-direction: column;
+  display: flex;
+  max-width: 450px;
+  align-content: center;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.row_right {
+  align-self: flex-end;
+  flex-direction: column;
+  display: none;
+  align-content: flex-end;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.button {
+  min-width: 150px;
+  margin: 5px;
+  flex-grow: 1;
+}
