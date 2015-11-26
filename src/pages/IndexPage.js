@@ -23,17 +23,19 @@ export default class IndexPage extends Component {
     const driveArgs = (dir) => {
       switch (dir) {
       case 'f':
-        return {cmd: 'Drive', args: { LWheelDist: 300, RWheelDist: 300, Speed: 100, Accel: 100, RPM: 0 }};
+        return {cmd: 'Drive', kwargs: { LWheelDist: 300, RWheelDist: 300, Speed: 100, Accel: 100, RPM: 0 }};
       case 'r':
-        return {cmd: 'Turn', args: {deg: -90}};
+        return {cmd: 'Turn', kwargs: {deg: -90}};
       case 'b':
-        return {cmd: 'Drive', args: { LWheelDist: -300, RWheelDist: -300, Speed: 100, Accel: 100, RPM: 0 }};
+        return {cmd: 'Drive', kwargs: { LWheelDist: -300, RWheelDist: -300, Speed: 100, Accel: 100, RPM: 0 }};
       case 'l':
-        return {cmd: 'Turn', args: {deg: 90 }};
+        return {cmd: 'Turn', kwargs: {deg: 90 }};
       case 'clean':
         return {cmd: 'Clean'};
       case 'park':
         return {cmd: 'BackToDock'};
+      case 'stop':
+        return {cmd: 'Clean', args: ['Stop']};
 
       default:
         return {};

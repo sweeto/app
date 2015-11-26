@@ -54,7 +54,7 @@ export default class Joystick extends Component {
           <Button className={styles.button} icon="add-circle-outline" label="Spot" raised primary
             onClick={() => onDrive('park')} onTouchStart={() => onDrive('spot')}/>
           <Button className={styles.button} icon="stop" label="Stop" raised primary
-            onClick={() => onDrive('clean')} onTouchStart={() => onDrive('clean')}/>
+            onClick={() => onDrive('clean')} onTouchStart={() => onDrive('stop')}/>
           <Button className={styles.button} icon="home" label="Park" raised primary
             onClick={() => onDrive('park')} onTouchStart={() => onDrive('park')}/>
         </div>
