@@ -9,6 +9,7 @@ import { motors } from './motors';
 import { accel } from './accel';
 import { lds } from './lds';
 import { charger } from './charger';
+import { schedule} from './schedule';
 
 const rootReducer = combineReducers({
   connection,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   motors,
   accel,
   lds,
-  charger
+  charger,
+  schedule
 });
 
 export default rootReducer;
