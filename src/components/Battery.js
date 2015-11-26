@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import FontIcon from 'react-toolbox/lib/font_icon';
 
 export default class Battery extends Component {
     static propTypes = {
@@ -7,11 +8,11 @@ export default class Battery extends Component {
 
   render() {
     const { charger } = this.props;
+    const batIcon = charger.get('ExtPwrPresent') > 0 ? 'battery-charging-full' : 'battery-std';
     return (
-      <dl>
-        <dt>Charging</dt><dd>{() => { return charger.get('ExtPwrPresent') > 0 ? 'Yes' : 'No'; }()}</dd>
-        <dt>Percentage</dt><dd>{charger.get('FuelPercent')}%</dd>
-      </dl>
+      <div>{charger.get('FuelPercent')}%
+        <FontIcon value={batIcon} />
+      </div>
     );
   }
 }
