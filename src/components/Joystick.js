@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Button from 'react-toolbox/lib/button';
 import Switch from 'react-toolbox/lib/switch';
-
 import styles from 'styles/Joystick.scss';
 
 export default class Joystick extends Component {
@@ -24,14 +23,18 @@ export default class Joystick extends Component {
     return (
       <div className={styles.parent}>
         <div className={styles.row}>
-          <Button icon="keyboard-arrow-up" floating accent onClick={() => onDrive('f')} />
+          <Button icon="keyboard-arrow-up" floating accent
+            onClick={() => onDrive('f')} onTouchStart={() => onDrive('f')} />
         </div>
         <div className={styles.row}>
-          <Button icon="keyboard-arrow-left" floating accent onClick={() => onDrive('l')}/>
-          <Button icon="keyboard-arrow-right" floating accent onClick={() => onDrive('r')}/>
+          <Button icon="keyboard-arrow-left" floating accent
+            onClick={() => onDrive('l')} onTouchStart={() => onDrive('l')}/>
+          <Button icon="keyboard-arrow-right" floating accent
+            onClick={() => onDrive('r')} onTouchStart={() => onDrive('r')}/>
         </div>
         <div className={styles.row}>
-          <Button icon="keyboard-arrow-down" floating accent onClick={() => onDrive('b')}/>
+          <Button icon="keyboard-arrow-down" floating accent
+            onClick={() => onDrive('b')} onTouchStart={() => onDrive('b')}/>
         </div>
         <div className={styles.row_right}>
           <Switch
@@ -46,10 +49,14 @@ export default class Joystick extends Component {
               />
         </div>
         <div className={styles.buttons}>
-          <Button className={styles.button} icon="play-circle-outline" label="Clean" raised primary onClick={() => onDrive('clean')}/>
-          <Button className={styles.button} icon="add-circle-outline" label="Spot" raised primary onClick={() => onDrive('park')}/>
-          <Button className={styles.button} icon="stop" label="Stop" raised primary onClick={() => onDrive('clean')}/>
-          <Button className={styles.button} icon="home" label="Park" raised primary onClick={() => onDrive('park')}/>
+          <Button className={styles.button} icon="play-circle-outline" label="Clean" raised primary
+            onClick={() => onDrive('clean')} onTouchStart={() => onDrive('clean')}/>
+          <Button className={styles.button} icon="add-circle-outline" label="Spot" raised primary
+            onClick={() => onDrive('park')} onTouchStart={() => onDrive('spot')}/>
+          <Button className={styles.button} icon="stop" label="Stop" raised primary
+            onClick={() => onDrive('clean')} onTouchStart={() => onDrive('clean')}/>
+          <Button className={styles.button} icon="home" label="Park" raised primary
+            onClick={() => onDrive('park')} onTouchStart={() => onDrive('park')}/>
         </div>
       </div>
     );
