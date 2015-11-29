@@ -16,11 +16,6 @@ export default class SchedulePage extends Component {
   static propTypes = {
     schedule: PropTypes.object
   }
-  handleChange = () => {
-    const { schedule } = this.props;
-    console.log('handleChange:', schedule.get('active'));
-    mqttPost('neato/commands', JSON.stringify( {cmd: 'SetSchedule', kwargs: {active: !schedule.get('active')}} ));
-  };
 
   render() {
     const { schedule } = this.props;
@@ -41,4 +36,10 @@ export default class SchedulePage extends Component {
       </div>
     );
   }
+
+  handleChange = () => {
+    const { schedule } = this.props;
+    mqttPost('neato/commands', JSON.stringify( {cmd: 'SetSchedule', kwargs: {active: !schedule.get('active')}} ));
+  };
+
 }

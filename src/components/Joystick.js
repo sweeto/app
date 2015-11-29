@@ -11,12 +11,6 @@ export default class Joystick extends Component {
     switch: [true, false]
   };
 
-  handleChange = (index) => {
-    const state = this.state.switch;
-    state[index] = !state[index];
-    this.setState({switch: state});
-  };
-
   render() {
     const { onDrive } = this.props;
 
@@ -61,4 +55,10 @@ export default class Joystick extends Component {
       </div>
     );
   }
+
+  handleChange = (index) => {
+    const state = this.state.switch;
+    state[index] = !state[index];
+    this.setState({switch: state});
+  };
 }

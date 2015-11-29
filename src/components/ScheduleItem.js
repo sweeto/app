@@ -10,7 +10,6 @@ export default class ScheduleItem extends Component {
 
   render() {
     const { schedule } = this.props;
-    console.log('ScheduleItem Schedule:', schedule);
     return (
       <ListItem primaryText={schedule.get('day')} secondaryText={schedule.get('time', '--')}
         leftIcon={<FontIcon value="edit" />}/>

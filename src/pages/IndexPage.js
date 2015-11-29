@@ -17,9 +17,26 @@ export default class IndexPage extends Component {
     motors: PropTypes.object
   }
 
-  onDrive(direction) {
-    console.log('DRIVE');
+  render() {
+    const { charger } = this.props;
 
+    // This is just a way of finding out if we have any data yet
+    if (!charger.get('VBattV')) {
+      return this.renderLoading();
+    }
+
+    return (
+      <div className={styles.parent}>
+        <Joystick onDrive={this.onDrive.bind(this)} />
+      </div>
+    );
+  }
+
+  renderLoading() {
+    return <span>Waiting for first measurement ...</span>;
+  }
+
+  onDrive(direction) {
     const driveArgs = (dir) => {
       switch (dir) {
       case 'f':
@@ -41,27 +58,8 @@ export default class IndexPage extends Component {
         return {};
       }
     };
-
-
     mqttPost('neato/commands', JSON.stringify(driveArgs(direction)));
   }
 
-  render() {
-    const { charger } = this.props;
 
-    // This is just a way of finding out if we have any data yet
-    if (!charger.get('VBattV')) {
-      return this.renderLoading();
-    }
-
-    return (
-      <div className={styles.parent}>
-        <Joystick onDrive={this.onDrive.bind(this)} />
-      </div>
-    );
-  }
-
-  renderLoading() {
-    return <span>Waiting for first measurement ...</span>;
-  }
 }
