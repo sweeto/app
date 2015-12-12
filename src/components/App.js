@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
 import Battery from '../components/Battery';
+import StatusBar from '../components/StatusBar';
 
 import styles from 'styles/App.scss';
 
@@ -14,17 +15,19 @@ const menuItems = [
     { route: '/schedule', text: 'Schedule' }
 ];
 @connect(state => ({
-  charger: state.charger
+  charger: state.charger,
+  activity: state.activity
 }))
 
 export default class IndexPage extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    charger: PropTypes.object
+    charger: PropTypes.object,
+    activity: PropTypes.object
   };
 
   render() {
-    const { charger } = this.props;
+    const { charger, activity } = this.props;
     return (
       <div className={styles.parent}>
         <AppBar title="Sweeto" onLeftIconButtonTouchTap={() => this.refs.leftNav.toggle()}
@@ -35,6 +38,7 @@ export default class IndexPage extends Component {
           {this.props.children}
         </div>
 
+        <StatusBar activity={activity}/>
       </div>
     );
   }
