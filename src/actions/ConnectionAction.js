@@ -59,6 +59,7 @@ export function mqttLogin(address, port, username, password) {
         if (err) {
           return dispatch(mqttError(err));
         }
+        mqttPost('neato/commands', JSON.stringify({cmd: 'Ping'}));
         return dispatch(mqttConnect());
       });
     });

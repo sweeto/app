@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Joystick from '../components/Joystick';
+import CircularProgress from 'material-ui/lib/circular-progress';
+
 
 // This one is not yet a real action!!!
 import { mqttPost } from '../actions/ConnectionAction';
@@ -22,7 +24,7 @@ export default class IndexPage extends Component {
 
     // This is just a way of finding out if we have any data yet
     if (!charger.get('VBattV')) {
-      return this.renderLoading();
+      return <CircularProgress mode="indeterminate" />;
     }
 
     return (
@@ -30,10 +32,6 @@ export default class IndexPage extends Component {
         <Joystick onDrive={this.onDrive.bind(this)} />
       </div>
     );
-  }
-
-  renderLoading() {
-    return <span>Waiting for first measurement ...</span>;
   }
 
   onDrive(direction) {
@@ -52,7 +50,7 @@ export default class IndexPage extends Component {
       case 'park':
         return {cmd: 'BackToDock'};
       case 'stop':
-        return {cmd: 'Clean', args: ['Stop']};
+        return {cmd: 'Clean', kwargs: {arg: 'Stop'}};
 
       default:
         return {};
