@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Joystick from '../components/Joystick';
-import CircularProgress from 'material-ui/lib/circular-progress';
-
 
 // This one is not yet a real action!!!
 import { mqttPost } from '../actions/ConnectionAction';
@@ -24,7 +22,7 @@ export default class IndexPage extends Component {
 
     // This is just a way of finding out if we have any data yet
     if (!charger.get('VBattV')) {
-      return <CircularProgress mode="indeterminate" />;
+      return <div></div>;
     }
 
     return (
