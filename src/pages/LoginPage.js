@@ -25,10 +25,14 @@ export default class LoginPage extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    const { connection } = nextProps;
+    const { connection, lastSuccessfulLogin } = nextProps;
 
     if (connection.get('state') === ConnectionStates.CONNECTED) {
       this.props.replaceState(null, '/');
+    }
+
+    if (lastSuccessfulLogin.get('address') && lastSuccessfulLogin.get('port') && lastSuccessfulLogin.get('username') && lastSuccessfulLogin.get('password')) {
+      this.onLogin(lastSuccessfulLogin.get('address'), lastSuccessfulLogin.get('port'), lastSuccessfulLogin.get('username'), lastSuccessfulLogin.get('password'));
     }
   }
 
