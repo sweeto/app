@@ -7,9 +7,7 @@
   <title>Sweeto</title>
 </head>
 <body>
-  <div id="content">
-    <h1>If you can see this, something went wrong ...</h1>
-  </div>
+  <div id="content"/>
 
   <script>
     __REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__
